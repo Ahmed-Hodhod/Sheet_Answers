@@ -1,0 +1,58 @@
+#include<iostream>
+using namespace std;
+
+void MultiplesOfValue(int * arrX, int n , int val , int * arrY, int &ind  );
+
+int main()
+{
+    // Take input from the user
+    int Size = 0;
+    cout << "Size of Array = " << endl ;
+    cin >> Size ;
+    int *arr = new int [Size] ;
+    // Fill the elements of the array
+    cout << "Array elements : "<<endl;
+    for (int i = 0; i < Size ; i ++)
+    {
+        int element = 0 ;
+        cin >> element ;
+        arr[i] = element;
+    }
+    // Value to be Compared
+    cout << "Val = " << endl ;
+    int val = 0 ;
+    cin >> val;
+    int *arrY = new int[Size];
+
+    // Call the function
+    int ind = 0;
+    MultiplesOfValue(arr, Size,val, arrY, ind);
+
+    cout << "Count of Multiples = " << ind << endl ;
+
+    // Output the multiples to the screen
+    cout << "ArrY = " << endl;
+   for (int i = 0; i < ind ; i ++ )
+    {
+        cout << arrY[i] << " " ;
+    }
+    // Free up the memory
+    delete [] arr;
+    delete [] arrY;
+    arrY = NULL;
+    arr = NULL;
+
+    return 0;
+}
+
+void MultiplesOfValue(int * arrX, int n , int val , int * arrY , int &ind )
+{
+    for (int i = 0; i < n ; i ++)
+    {
+        if (arrX[i] % val == 0)
+        {
+            arrY[ind] = arrX[i];
+            ind ++;
+        }
+    }
+}
